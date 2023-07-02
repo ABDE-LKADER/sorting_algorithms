@@ -1,11 +1,11 @@
 #include "sort.h"
 /**
- * swap1 - swaps nodes from left to right
- * @list: pointer to list
- * @head: pointer to head node
- * @aux: auxiliar pointer
- * Return: no return
+ * swap1 -> swaps nodes from left to right
+ * @list: List
+ * @head: Head Node
+ * @aux: Auxiliar Node
  */
+
 void swap1(listint_t **list, listint_t *head, listint_t *aux)
 {
 	if (head->prev)
@@ -21,13 +21,14 @@ void swap1(listint_t **list, listint_t *head, listint_t *aux)
 	print_list(*list);
 
 }
+
 /**
- * swap2 - swaps nodes from right to left
- * @list: pointer to list
- * @head: pointer to head node
- * @aux: auxiliar pointer
- * Return: no return
+ * swap2 -> Swaps nodes from right to left
+ * @list: List
+ * @head: Head Node
+ * @aux: Auxiliar Node
  */
+
 void swap2(listint_t **list, listint_t *head, listint_t *aux)
 {
 	aux = head->prev;
@@ -45,45 +46,44 @@ void swap2(listint_t **list, listint_t *head, listint_t *aux)
 }
 
 /**
- * cocktail_sort_list - sorts a doubly linked list of integers
- * in ascending order using the Cocktail sort ailgorithm
- * @list: pointer to the list head
- * Return: no return
+ * cocktail_sort_list -> sorts a doubly linked list of integers
+ * @list: List
  **/
+
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *head, *aux;
-	int flag = 1;
+	listint_t *h, *a;
+	int b = 1;
 
 	if (list)
 	{
-		head = *list;
-		while (flag != 0)
+		h = *list;
+		while (b != 0)
 		{
-			flag = 0;
-			while (head->next)
+			b = 0;
+			while (h->next)
 			{
-				if (head->n > head->next->n)
+				if (h->n > h->next->n)
 				{
-					aux = head->next;
-					swap1(list, head, aux);
-					flag = 1;
+					a = h->next;
+					swap1(list, h, a);
+					b = 1;
 				}
 				else
-					head = head->next;
+					h = h->next;
 			}
-			if (flag == 0)
+			if (b == 0)
 				break;
-			flag = 0;
-			while (head->prev)
+			b = 0;
+			while (h->prev)
 			{
-				if (head->prev->n > head->n)
+				if (h->prev->n > h->n)
 				{
-					swap2(list, head, aux);
-					flag = 1;
+					swap2(list, h, a);
+					b = 1;
 				}
 				else
-					head = head->prev;
+					h = h->prev;
 			}
 
 		}
